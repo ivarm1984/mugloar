@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+    group:
+      dev: dev
+  application.name: mugloar
+
+wiremock.port: 8081
+
+game.server:
+  baseUrl: https://dragonsofmugloar.com/api/v2
+  gameStartUrl: /game/start
+  investigateReputationUrl: /:gameId/investigate/reputation
+  messagesUrl: /:gameId/messages
+  solveUrl: /:gameId/solve/:adId
+  shopUrl: /:gameId/shop
+  shopBuyUrl: /:gameId/shop/buy/:itemId

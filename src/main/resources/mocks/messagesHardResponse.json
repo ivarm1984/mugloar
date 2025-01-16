@@ -1,0 +1,76 @@
+[
+  {
+    "adId": "XojT2eBv",
+    "message": "Create an advertisement campaign for Diane Swindlehurst to promote their wagon based business",
+    "reward": 40,
+    "expiresIn": 2,
+    "probability": "Walk in the park"
+  },
+  {
+    "adId": "VQzb6aLV",
+    "message": "Steal clothes delivery to Sebastianus Montgomery and share some of the profits with the people.",
+    "reward": 58,
+    "expiresIn": 3,
+    "probability": "Piece of cake"
+  },
+  {
+    "adId": "aLhh4TKu",
+    "message": "Help Des Salvage to write their biographical novel about their difficulties with a deranged cat",
+    "reward": 36,
+    "expiresIn": 4,
+    "probability": "Walk in the park"
+  },
+  {
+    "adId": "eUZZc2ZBT2M=",
+    "message": "SW5maWx0cmF0ZSBUaGUgSWRlYWxpc3RzIGFuZCByZWNvdmVyIHRoZWlyIHNlY3JldHMu",
+    "reward": 182,
+    "expiresIn": 1,
+    "encrypted": 1,
+    "probability": "U3VpY2lkZSBtaXNzaW9u"
+  },
+  {
+    "adId": "PVQ6tY1R",
+    "message": "Rescue Appius Gardener from meadow in Sharpburg where they are attacked by angry water",
+    "reward": 26,
+    "expiresIn": 6,
+    "probability": "Walk in the park"
+  },
+  {
+    "adId": "QTF5dHBYOHg=",
+    "message": "SW52ZXN0aWdhdGUgU2VwdGVtYmVyIFdvb2Ryb3cgYW5kIGZpbmQgb3V0IHRoZWlyIHJlbGF0aW9uIHRvIHRoZSBtYWdpYyBidWNrZXQu",
+    "reward": 192,
+    "expiresIn": 3,
+    "encrypted": 1,
+    "probability": "R2FtYmxl"
+  },
+  {
+    "adId": "bWp0Y3VsclQ=",
+    "message": "SW52ZXN0aWdhdGUgTmFyY2lzc2UgV2luc3RvbiBhbmQgZmluZCBvdXQgdGhlaXIgcmVsYXRpb24gdG8gdGhlIG1hZ2ljIHdhdGVyLg==",
+    "reward": 163,
+    "expiresIn": 3,
+    "encrypted": 1,
+    "probability": "SG1tbS4uLi4="
+  },
+  {
+    "adId": "TWy35Sr8",
+    "message": "Steal pot from Trees Eddudóttir",
+    "reward": 127,
+    "expiresIn": 7,
+    "probability": "Suicide mission"
+  },
+  {
+    "adId": "Q3dTbllQZ3o=",
+    "message": "SW52ZXN0aWdhdGUgQmVlbHplYnViIEplZmZlcnMgYW5kIGZpbmQgb3V0IHRoZWlyIHJlbGF0aW9uIHRvIHRoZSBtYWdpYyBzaGVlcC4=",
+    "reward": 170,
+    "expiresIn": 3,
+    "encrypted": 1,
+    "probability": "U3VpY2lkZSBtaXNzaW9u"
+  },
+  {
+    "adId": "dtvJ8SSm",
+    "message": "Steal turnips from Paško Steinauer",
+    "reward": 121,
+    "expiresIn": 7,
+    "probability": "Suicide mission"
+  }
+]

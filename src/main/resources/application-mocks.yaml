@@ -1,0 +1,2 @@
+game.server:
+  base-url: http://localhost:${wiremock.port}/api/v2
