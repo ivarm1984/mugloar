@@ -1,5 +1,11 @@
 package ee.ivar.mugloar.gameserver;
 
+import ee.ivar.mugloar.gameserver.response.GameStartResponse;
+import ee.ivar.mugloar.gameserver.response.MessageResponse;
+import ee.ivar.mugloar.gameserver.response.ReputationResponse;
+import ee.ivar.mugloar.gameserver.response.ShopBuyResponse;
+import ee.ivar.mugloar.gameserver.response.ShopResponse;
+import ee.ivar.mugloar.gameserver.response.SolveResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

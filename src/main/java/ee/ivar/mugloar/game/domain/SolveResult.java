@@ -1,4 +1,4 @@
-package ee.ivar.mugloar.game;
+package ee.ivar.mugloar.game.domain;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,4 +10,5 @@ public class SolveResult {
     private int turn;
     private int score;
     private boolean success;
+    private int gold;
 }

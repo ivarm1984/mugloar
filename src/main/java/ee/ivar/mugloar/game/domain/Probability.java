@@ -1,4 +1,4 @@
-package ee.ivar.mugloar.game;
+package ee.ivar.mugloar.game.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +28,6 @@ public enum Probability {
                 return prob;
             }
         }
-        log.warn("Unknown probability {}", probability);
         return UNKNOWN;
     }
 }

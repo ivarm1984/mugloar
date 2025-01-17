@@ -1,4 +1,4 @@
-package ee.ivar.mugloar.gameserver;
+package ee.ivar.mugloar.gameserver.response;
 
 import lombok.Data;
 

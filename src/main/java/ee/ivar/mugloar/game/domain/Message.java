@@ -1,4 +1,4 @@
-package ee.ivar.mugloar.game;
+package ee.ivar.mugloar.game.domain;
 
 import lombok.Builder;
 import lombok.Data;
