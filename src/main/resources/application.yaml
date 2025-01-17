@@ -3,15 +3,26 @@ spring:
     active: dev
     group:
       dev: dev
+      dev-mocks: dev, mocks
   application.name: mugloar
 
 wiremock.port: 8081
 
 game.server:
-  baseUrl: https://dragonsofmugloar.com/api/v2
-  gameStartUrl: /game/start
-  investigateReputationUrl: /:gameId/investigate/reputation
-  messagesUrl: /:gameId/messages
-  solveUrl: /:gameId/solve/:adId
-  shopUrl: /:gameId/shop
-  shopBuyUrl: /:gameId/shop/buy/:itemId
+  base-url: https://dragonsofmugloar.com/api/v2
+  game-start-url: /game/start
+  investigate-reputation-url: /:gameId/investigate/reputation
+  messages-url: /:gameId/messages
+  solve-url: /:gameId/solve/:adId
+  shop-url: /:gameId/shop
+  shop-buy-url: /:gameId/shop/buy/:itemId
+
+game.mode: naive
+
+training:
+  number-of-parallel-games: 150
+  training-rounds: 5
+  games-in-one-round: 3
+  player-count: 100
+  number-of-survivors: 30
+  mutation-chance-percentage: 0.1
