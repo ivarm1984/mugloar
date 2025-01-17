@@ -7,7 +7,6 @@ import ee.ivar.mugloar.game.domain.Shop;
 import ee.ivar.mugloar.game.domain.ShopItem;
 import ee.ivar.mugloar.game.domain.SolveResult;
 import ee.ivar.mugloar.game.strategy.GameSettings;
-import ee.ivar.mugloar.game.strategy.RandomDecisionStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -51,7 +50,7 @@ class GameRunnerTest {
         when(gameService.getShop(anyString())).thenReturn(new Shop(List.of()));
 
         // When
-        int finalScore = gameRunner.runGame(gameSettings, new RandomDecisionStrategy());
+        int finalScore = gameRunner.runGame(gameSettings);
 
         // Then
         assertThat(finalScore).isEqualTo(100);
@@ -78,7 +77,7 @@ class GameRunnerTest {
         when(gameService.buyItem(anyString(), eq(itemToBuy.getType().getId()))).thenReturn(40);
 
         // When
-        int finalScore = gameRunner.runGame(gameSettings, new RandomDecisionStrategy());
+        int finalScore = gameRunner.runGame(gameSettings);
 
         // Then
         verify(gameService).buyItem(anyString(), eq(itemToBuy.getType().getId()));
