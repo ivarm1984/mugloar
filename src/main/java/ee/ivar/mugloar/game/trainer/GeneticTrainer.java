@@ -4,7 +4,6 @@ import ee.ivar.mugloar.game.GameRunner;
 import ee.ivar.mugloar.game.domain.Probability;
 import ee.ivar.mugloar.game.domain.ShopItem;
 import ee.ivar.mugloar.game.strategy.GameSettings;
-import ee.ivar.mugloar.game.strategy.WeightedDecisionStrategy;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -83,6 +82,7 @@ public class GeneticTrainer {
 
     private GameSettings mateSettings(GameSettings settings1, GameSettings settings2) {
         GameSettings newSettings = new GameSettings();
+        newSettings.setDecisionStrategy(settings1.getDecisionStrategy());
 
         Map<Probability, Integer> combinedProbabilityWeights = new HashMap<>();
         for (Probability probability : settings1.getProbabilityWeights().keySet()) {
@@ -131,7 +131,7 @@ public class GeneticTrainer {
         for (int i = 0; i < trainingConfig.getGamesInOneRound(); i++) {
             tasks.addAll(players.stream()
                     .map(player -> (Callable<Void>) () -> {
-                        int score = gameRunner.runGame(player.getSettings(), new WeightedDecisionStrategy());
+                        int score = gameRunner.runGame(player.getSettings());
                         synchronized (player) {
                             player.setScore(player.getScore() + score);
                         }

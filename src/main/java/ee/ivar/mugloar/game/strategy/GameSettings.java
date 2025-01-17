@@ -19,6 +19,7 @@ public class GameSettings {
     private Map<Probability, Integer> probabilityWeights;
     private Map<ShopItem, Integer> shopItemProbabilityWeights;
     private int tooGoodToBeTrueLimit;
+    private DecisionStrategy decisionStrategy;
 
     public static GameSettings createWithRandomWeights() {
         GameSettings gameSettings = new GameSettings();
@@ -34,6 +35,7 @@ public class GameSettings {
                    item -> ThreadLocalRandom.current().nextInt(SHOP_ITEM_MAX_WEIGTH)
                 ));
         gameSettings.tooGoodToBeTrueLimit = ThreadLocalRandom.current().nextInt(TOO_GOOD_TO_BE_TRUE_MAX_LIMIT);
+        gameSettings.decisionStrategy = new RandomDecisionStrategy();
         return gameSettings;
     }
 
@@ -70,26 +72,28 @@ public class GameSettings {
         itemWeights.put(ShopItem.UNKNOWN, 1);
         gameSettings.setShopItemProbabilityWeights(itemWeights);
 
+        gameSettings.decisionStrategy = new WeightedDecisionStrategy();
+
         return gameSettings;
     }
 
     public static GameSettings createWithPretrainedWeights() {
         GameSettings gameSettings = new GameSettings();
         Map<Probability, Integer> probabilityWeights = new HashMap<>();
-        probabilityWeights.put(Probability.HMM, 99);
+        probabilityWeights.put(Probability.HMM, 93);
         probabilityWeights.put(Probability.GAMBLE, 67);
-        probabilityWeights.put(Probability.PLAYING_WITH_FIRE, 47);
-        probabilityWeights.put(Probability.QUITE_LIKELY, 10);
-        probabilityWeights.put(Probability.PIECE_OF_CAKE, 61);
-        probabilityWeights.put(Probability.RATHER_DETRIMENTAL, 47);
-        probabilityWeights.put(Probability.RISKY, 42);
-        probabilityWeights.put(Probability.SUICIDE_MISSION, 21);
-        probabilityWeights.put(Probability.SURE_THING, 5);
+        probabilityWeights.put(Probability.PLAYING_WITH_FIRE, 8);
+        probabilityWeights.put(Probability.QUITE_LIKELY, 73);
+        probabilityWeights.put(Probability.PIECE_OF_CAKE, 88);
+        probabilityWeights.put(Probability.RATHER_DETRIMENTAL, 33);
+        probabilityWeights.put(Probability.RISKY, 35);
+        probabilityWeights.put(Probability.SUICIDE_MISSION, 88);
+        probabilityWeights.put(Probability.SURE_THING, 1);
         probabilityWeights.put(Probability.UNKNOWN, 42);
-        probabilityWeights.put(Probability.WALK_IN_THE_PARK, 86);
+        probabilityWeights.put(Probability.WALK_IN_THE_PARK, 26);
 
         gameSettings.setProbabilityWeights(probabilityWeights);
-        gameSettings.setTooGoodToBeTrueLimit(94);
+        gameSettings.setTooGoodToBeTrueLimit(7);
 
         Map<ShopItem, Integer> itemWeights = new HashMap<>();
         itemWeights.put(ShopItem.CH, 6);
@@ -105,6 +109,9 @@ public class GameSettings {
         itemWeights.put(ShopItem.WINGPOTMAX, 30);
         itemWeights.put(ShopItem.UNKNOWN, 42);
         gameSettings.setShopItemProbabilityWeights(itemWeights);
+
+        gameSettings.decisionStrategy = new WeightedDecisionStrategy();
+
         return gameSettings;
     }
 }

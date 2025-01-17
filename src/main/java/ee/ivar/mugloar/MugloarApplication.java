@@ -30,23 +30,23 @@ public class MugloarApplication {
         switch (context.getBean(MugloarApplication.class).gameMode) {
             case GAME_MODE_NAIVE:
                 log.info("Running in Naive mode...");
-                gameRunner.runGame(GameSettings.createWithNaiveWeights(), new WeightedDecisionStrategy());
+                gameRunner.runGame(GameSettings.createWithNaiveWeights());
                 break;
 
             case GAME_MODE_RANDOM:
                 log.info("Running in Random mode...");
-                gameRunner.runGame(GameSettings.createWithRandomWeights(), new RandomDecisionStrategy());
+                gameRunner.runGame(GameSettings.createWithRandomWeights());
                 break;
 
             case GAME_MODE_PRETRAINED:
                 log.info("Running in Pretrained mode...");
-                gameRunner.runGame(GameSettings.createWithPretrainedWeights(), new WeightedDecisionStrategy());
+                gameRunner.runGame(GameSettings.createWithPretrainedWeights());
                 break;
 
             case GAME_MODE_TRAIN:
                 log.info("Running in Training mode...");
                 GameSettings settings = context.getBean(GeneticTrainer.class).runTraining();
-                int finalScore = gameRunner.runGame(settings, new WeightedDecisionStrategy());
+                int finalScore = gameRunner.runGame(settings);
                 log.info("Final score for best player {}", finalScore);
                 break;
             default:

@@ -21,8 +21,8 @@ game.mode: naive
 
 training:
   number-of-parallel-games: 150
-  training-rounds: 5
-  games-in-one-round: 3
-  player-count: 100
-  number-of-survivors: 30
+  training-rounds: 10
+  games-in-one-round: 5
+  player-count: 30
+  number-of-survivors: 10
   mutation-chance-percentage: 0.1
