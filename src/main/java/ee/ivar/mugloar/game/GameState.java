@@ -3,10 +3,12 @@ package ee.ivar.mugloar.game;
 import ee.ivar.mugloar.game.domain.GameStartInfo;
 import ee.ivar.mugloar.game.domain.Message;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class GameState {
     private String gameId;
     private int lives;

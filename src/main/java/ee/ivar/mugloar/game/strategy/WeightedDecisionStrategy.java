@@ -36,7 +36,7 @@ public class WeightedDecisionStrategy implements DecisionStrategy {
         int reward = message.getReward();
         int weight = gameSettings.getProbabilityWeights().getOrDefault(message.getProbability(), 0);
         int value = reward + weight;
-        if (reward > gameSettings.getTooGoodToBeTrueLimit()) {
+        if (value > gameSettings.getTooGoodToBeTrueLimit()) {
             log.debug("Too good to be true: {} {}", message.getReward(),  value);
             value = 0;
         }

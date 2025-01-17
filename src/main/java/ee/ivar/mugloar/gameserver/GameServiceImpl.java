@@ -12,6 +12,7 @@ import ee.ivar.mugloar.gameserver.response.SolveResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,7 +52,7 @@ public class GameServiceImpl implements GameService {
     @Override
     public Shop getShop(String gameId) {
         List<ShopResponse> shopResponse = gameHttpClient.getShop(gameId);
-        Shop shop = new Shop();
+        Shop shop = new Shop(new ArrayList<>());
         shop.setItems(shopResponse.stream()
                 .map(item -> Shop.Item.builder()
                 .name(item.getName())

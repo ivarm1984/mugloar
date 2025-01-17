@@ -18,14 +18,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GameRunner {
 
-    private static final DecisionStrategy STRATEGY = new WeightedDecisionStrategy();
+    private static DecisionStrategy STRATEGY = new WeightedDecisionStrategy();
     private static GameSettings SETTINGS = GameSettings.createWithNaiveWeights();
 
     private final GameService gameApi;
 
-    public int runGame(GameSettings settings) {
+    public int runGame(GameSettings settings, DecisionStrategy strategy) {
         if (settings != null) {
             SETTINGS = settings;
+        }
+        if (strategy != null) {
+            STRATEGY = strategy;
         }
         GameStartInfo gameInfo = gameApi.startGame();
         log.info("Starting game {}", gameInfo.getGameId());

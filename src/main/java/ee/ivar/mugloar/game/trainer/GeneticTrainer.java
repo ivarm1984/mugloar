@@ -4,6 +4,7 @@ import ee.ivar.mugloar.game.GameRunner;
 import ee.ivar.mugloar.game.domain.Probability;
 import ee.ivar.mugloar.game.domain.ShopItem;
 import ee.ivar.mugloar.game.strategy.GameSettings;
+import ee.ivar.mugloar.game.strategy.WeightedDecisionStrategy;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -89,11 +90,7 @@ public class GeneticTrainer {
                     ? settings1.getProbabilityWeights().get(probability)
                     : settings2.getProbabilityWeights().get(probability);
 
-            // Apply mutation
-            if (ThreadLocalRandom.current().nextDouble() < trainingConfig.getMutationChancePercentage()) {
-                weight += ThreadLocalRandom.current().nextInt(-5, 5);
-                weight = Math.min(GameSettings.PROBABILITY_MAX_WEIGHT, Math.max(0, weight));
-            }
+            weight = applyMutation(weight, -5, 5, GameSettings.PROBABILITY_MAX_WEIGHT);
 
             combinedProbabilityWeights.put(probability, weight);
         }
@@ -105,11 +102,7 @@ public class GeneticTrainer {
                     ? settings1.getShopItemProbabilityWeights().get(shopItem)
                     : settings2.getShopItemProbabilityWeights().get(shopItem);
 
-            // Apply mutation
-            if (ThreadLocalRandom.current().nextDouble() < trainingConfig.getMutationChancePercentage()) {
-                weight += ThreadLocalRandom.current().nextInt(-5, 5);
-                weight = Math.min(GameSettings.SHOP_ITEM_MAX_WEIGTH, Math.max(0, weight));
-            }
+            weight = applyMutation(weight, -5, 5, GameSettings.SHOP_ITEM_MAX_WEIGTH);
             combinedShopItemWeights.put(shopItem, weight);
         }
         newSettings.setShopItemProbabilityWeights(combinedShopItemWeights);
@@ -117,14 +110,19 @@ public class GeneticTrainer {
         int tooGoodToBeTrueLimit = ThreadLocalRandom.current().nextBoolean()
                 ? settings1.getTooGoodToBeTrueLimit()
                 : settings2.getTooGoodToBeTrueLimit();
-        // Apply mutation
-        if (ThreadLocalRandom.current().nextDouble() < trainingConfig.getMutationChancePercentage()) {
-            tooGoodToBeTrueLimit += ThreadLocalRandom.current().nextInt(-20, 21);
-            tooGoodToBeTrueLimit = Math.min(GameSettings.TOO_GOOD_TO_BE_TRUE_MAX_LIMIT, Math.max(0, tooGoodToBeTrueLimit));
-        }
+
+        tooGoodToBeTrueLimit = applyMutation(tooGoodToBeTrueLimit, -20, 21, GameSettings.TOO_GOOD_TO_BE_TRUE_MAX_LIMIT);
         newSettings.setTooGoodToBeTrueLimit(tooGoodToBeTrueLimit);
 
         return newSettings;
+    }
+
+    private int applyMutation(int weight, int x, int x1, int probabilityMaxWeight) {
+        if (ThreadLocalRandom.current().nextDouble() < trainingConfig.getMutationChancePercentage()) {
+            weight += ThreadLocalRandom.current().nextInt(x, x1);
+            weight = Math.min(probabilityMaxWeight, Math.max(0, weight));
+        }
+        return weight;
     }
 
     private void runATrainingRound() {
@@ -133,7 +131,7 @@ public class GeneticTrainer {
         for (int i = 0; i < trainingConfig.getGamesInOneRound(); i++) {
             tasks.addAll(players.stream()
                     .map(player -> (Callable<Void>) () -> {
-                        int score = gameRunner.runGame(player.getSettings());
+                        int score = gameRunner.runGame(player.getSettings(), new WeightedDecisionStrategy());
                         synchronized (player) {
                             player.setScore(player.getScore() + score);
                         }

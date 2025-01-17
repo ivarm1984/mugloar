@@ -2,6 +2,8 @@ package ee.ivar.mugloar;
 
 import ee.ivar.mugloar.game.GameRunner;
 import ee.ivar.mugloar.game.strategy.GameSettings;
+import ee.ivar.mugloar.game.strategy.RandomDecisionStrategy;
+import ee.ivar.mugloar.game.strategy.WeightedDecisionStrategy;
 import ee.ivar.mugloar.game.trainer.GeneticTrainer;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,23 +30,23 @@ public class MugloarApplication {
         switch (context.getBean(MugloarApplication.class).gameMode) {
             case GAME_MODE_NAIVE:
                 log.info("Running in Naive mode...");
-                gameRunner.runGame(GameSettings.createWithNaiveWeights());
+                gameRunner.runGame(GameSettings.createWithNaiveWeights(), new WeightedDecisionStrategy());
                 break;
 
             case GAME_MODE_RANDOM:
                 log.info("Running in Random mode...");
-                gameRunner.runGame(GameSettings.createWithRandomWeights());
+                gameRunner.runGame(GameSettings.createWithRandomWeights(), new RandomDecisionStrategy());
                 break;
 
             case GAME_MODE_PRETRAINED:
                 log.info("Running in Pretrained mode...");
-                gameRunner.runGame(GameSettings.createWithPretrainedWeights());
+                gameRunner.runGame(GameSettings.createWithPretrainedWeights(), new WeightedDecisionStrategy());
                 break;
 
             case GAME_MODE_TRAIN:
                 log.info("Running in Training mode...");
                 GameSettings settings = context.getBean(GeneticTrainer.class).runTraining();
-                int finalScore = gameRunner.runGame(settings);
+                int finalScore = gameRunner.runGame(settings, new WeightedDecisionStrategy());
                 log.info("Final score for best player {}", finalScore);
                 break;
             default:
