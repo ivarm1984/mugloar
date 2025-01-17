@@ -80,20 +80,20 @@ public class GameSettings {
     public static GameSettings createWithPretrainedWeights() {
         GameSettings gameSettings = new GameSettings();
         Map<Probability, Integer> probabilityWeights = new HashMap<>();
-        probabilityWeights.put(Probability.HMM, 93);
-        probabilityWeights.put(Probability.GAMBLE, 67);
-        probabilityWeights.put(Probability.PLAYING_WITH_FIRE, 8);
-        probabilityWeights.put(Probability.QUITE_LIKELY, 73);
-        probabilityWeights.put(Probability.PIECE_OF_CAKE, 88);
-        probabilityWeights.put(Probability.RATHER_DETRIMENTAL, 33);
-        probabilityWeights.put(Probability.RISKY, 35);
-        probabilityWeights.put(Probability.SUICIDE_MISSION, 88);
-        probabilityWeights.put(Probability.SURE_THING, 1);
+        probabilityWeights.put(Probability.HMM, 56);
+        probabilityWeights.put(Probability.GAMBLE, 41);
+        probabilityWeights.put(Probability.PLAYING_WITH_FIRE, 16);
+        probabilityWeights.put(Probability.QUITE_LIKELY, 54);
+        probabilityWeights.put(Probability.PIECE_OF_CAKE, 81);
+        probabilityWeights.put(Probability.RATHER_DETRIMENTAL, 94);
+        probabilityWeights.put(Probability.RISKY, 82);
+        probabilityWeights.put(Probability.SUICIDE_MISSION, 24);
+        probabilityWeights.put(Probability.SURE_THING, 96);
         probabilityWeights.put(Probability.UNKNOWN, 42);
-        probabilityWeights.put(Probability.WALK_IN_THE_PARK, 26);
+        probabilityWeights.put(Probability.WALK_IN_THE_PARK, 74);
 
         gameSettings.setProbabilityWeights(probabilityWeights);
-        gameSettings.setTooGoodToBeTrueLimit(7);
+        gameSettings.setTooGoodToBeTrueLimit(163);
 
         Map<ShopItem, Integer> itemWeights = new HashMap<>();
         itemWeights.put(ShopItem.CH, 6);
