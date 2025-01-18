@@ -81,7 +81,7 @@ class WeightedDecisionStrategyTest {
         // Given
         Message message1 = new Message("mess1", 30, Probability.HMM);
         Message message2 = new Message("mess2", 50, Probability.RISKY);
-        Message message3 = new Message("mess3", 60, Probability.PIECE_OF_CAKE);
+        Message message3 = new Message("mess3", 80, Probability.PIECE_OF_CAKE);
         List<Message> messages = List.of(message1, message2, message3);
         gameState.setMessages(messages);
 

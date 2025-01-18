@@ -20,17 +20,17 @@ class GameSettingsTest {
         Map<ShopItem, Integer> shopItemWeights = naiveGameSettings.getShopItemProbabilityWeights();
 
         // Then
-        assertThat(probabilityWeights).containsEntry(Probability.HMM, 70);
-        assertThat(probabilityWeights).containsEntry(Probability.GAMBLE, 40);
+        assertThat(probabilityWeights).containsEntry(Probability.HMM, 40);
+        assertThat(probabilityWeights).containsEntry(Probability.GAMBLE, 15);
         assertThat(probabilityWeights).containsEntry(Probability.PLAYING_WITH_FIRE, 10);
-        assertThat(probabilityWeights).containsEntry(Probability.SURE_THING, 90);
+        assertThat(probabilityWeights).containsEntry(Probability.SURE_THING, 99);
 
-        assertThat(shopItemWeights).containsEntry(ShopItem.CH, 15);
-        assertThat(shopItemWeights).containsEntry(ShopItem.CS, 70);
-        assertThat(shopItemWeights).containsEntry(ShopItem.GAS, 30);
+        assertThat(shopItemWeights).containsEntry(ShopItem.CH, 6);
+        assertThat(shopItemWeights).containsEntry(ShopItem.CS, 6);
+        assertThat(shopItemWeights).containsEntry(ShopItem.GAS, 6);
         assertThat(shopItemWeights).containsEntry(ShopItem.MTRIX, 80);
 
-        assertThat(naiveGameSettings.getTooGoodToBeTrueLimit()).isEqualTo(120);
+        assertThat(naiveGameSettings.getTooGoodToBeTrueLimit()).isEqualTo(180);
     }
 
     @Test
