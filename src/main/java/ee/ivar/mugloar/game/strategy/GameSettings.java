@@ -45,7 +45,7 @@ public class GameSettings {
         probabilityWeights.put(Probability.HMM, 40);
         probabilityWeights.put(Probability.GAMBLE, 25);
         probabilityWeights.put(Probability.PLAYING_WITH_FIRE, 10);
-        probabilityWeights.put(Probability.QUITE_LIKELY, 70);
+        probabilityWeights.put(Probability.QUITE_LIKELY, 60);
         probabilityWeights.put(Probability.PIECE_OF_CAKE, 90);
         probabilityWeights.put(Probability.RATHER_DETRIMENTAL, 30);
         probabilityWeights.put(Probability.RISKY, 10);
@@ -58,11 +58,11 @@ public class GameSettings {
         gameSettings.setTooGoodToBeTrueLimit(150);
 
         Map<ShopItem, Integer> itemWeights = new HashMap<>();
-        itemWeights.put(ShopItem.CH, 15);
-        itemWeights.put(ShopItem.CS, 70);
-        itemWeights.put(ShopItem.GAS, 30);
-        itemWeights.put(ShopItem.WAX, 70);
-        itemWeights.put(ShopItem.HPOT, 50);
+        itemWeights.put(ShopItem.CH, 6);
+        itemWeights.put(ShopItem.CS, 6);
+        itemWeights.put(ShopItem.GAS, 6);
+        itemWeights.put(ShopItem.WAX, 6);
+        itemWeights.put(ShopItem.HPOT, 6);
         itemWeights.put(ShopItem.TRICKS, 5);
         itemWeights.put(ShopItem.WINGPOT, 9);
         itemWeights.put(ShopItem.RF, 10);

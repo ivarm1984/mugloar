@@ -9,7 +9,6 @@ To build the project and run tests:
 ```
 
 To run a game with random player
-
 ```bash
      ./gradlew bootRun --args='--game.mode=random'
 ```
