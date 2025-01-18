@@ -42,20 +42,20 @@ public class GameSettings {
     public static GameSettings createWithNaiveWeights() {
         GameSettings gameSettings = new GameSettings();
         Map<Probability, Integer> probabilityWeights = new HashMap<>();
-        probabilityWeights.put(Probability.HMM, 70);
-        probabilityWeights.put(Probability.GAMBLE, 40);
+        probabilityWeights.put(Probability.HMM, 40);
+        probabilityWeights.put(Probability.GAMBLE, 25);
         probabilityWeights.put(Probability.PLAYING_WITH_FIRE, 10);
-        probabilityWeights.put(Probability.QUITE_LIKELY, 60);
-        probabilityWeights.put(Probability.PIECE_OF_CAKE, 80);
+        probabilityWeights.put(Probability.QUITE_LIKELY, 70);
+        probabilityWeights.put(Probability.PIECE_OF_CAKE, 90);
         probabilityWeights.put(Probability.RATHER_DETRIMENTAL, 30);
         probabilityWeights.put(Probability.RISKY, 10);
         probabilityWeights.put(Probability.SUICIDE_MISSION, 10);
         probabilityWeights.put(Probability.SURE_THING, 90);
         probabilityWeights.put(Probability.UNKNOWN, 10);
-        probabilityWeights.put(Probability.WALK_IN_THE_PARK, 50);
+        probabilityWeights.put(Probability.WALK_IN_THE_PARK, 80);
 
         gameSettings.setProbabilityWeights(probabilityWeights);
-        gameSettings.setTooGoodToBeTrueLimit(120);
+        gameSettings.setTooGoodToBeTrueLimit(150);
 
         Map<ShopItem, Integer> itemWeights = new HashMap<>();
         itemWeights.put(ShopItem.CH, 15);
@@ -63,8 +63,8 @@ public class GameSettings {
         itemWeights.put(ShopItem.GAS, 30);
         itemWeights.put(ShopItem.WAX, 70);
         itemWeights.put(ShopItem.HPOT, 50);
-        itemWeights.put(ShopItem.TRICKS, 70);
-        itemWeights.put(ShopItem.WINGPOT, 90);
+        itemWeights.put(ShopItem.TRICKS, 5);
+        itemWeights.put(ShopItem.WINGPOT, 9);
         itemWeights.put(ShopItem.RF, 10);
         itemWeights.put(ShopItem.IRON, 5);
         itemWeights.put(ShopItem.MTRIX, 80);
