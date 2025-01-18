@@ -2,8 +2,6 @@ package ee.ivar.mugloar;
 
 import ee.ivar.mugloar.game.GameRunner;
 import ee.ivar.mugloar.game.strategy.GameSettings;
-import ee.ivar.mugloar.game.strategy.RandomDecisionStrategy;
-import ee.ivar.mugloar.game.strategy.WeightedDecisionStrategy;
 import ee.ivar.mugloar.game.trainer.GeneticTrainer;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;

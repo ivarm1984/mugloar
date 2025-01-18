@@ -16,7 +16,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GameRunner {
 
-    private static final int MIN_GOLD_TO_QUERY_SHOP = 100;
     private GameSettings settings = GameSettings.createWithNaiveWeights();
 
     private final GameService gameApi;
@@ -56,9 +55,6 @@ public class GameRunner {
     }
 
     private void tryToBuy(GameState gameState) {
-        if (gameState.getGold() < MIN_GOLD_TO_QUERY_SHOP) {
-            return;
-        }
         Shop shop = gameApi.getShop(gameState.getGameId());
         Shop.Item itemToBuy = settings.getDecisionStrategy().chooseItemToBuy(gameState.getGold(), shop, settings);
         if (itemToBuy != null) {

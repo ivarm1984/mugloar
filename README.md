@@ -13,7 +13,7 @@ To run a game with random player
      ./gradlew bootRun --args='--game.mode=random'
 ```
 
-To run a game using naive values that the programmer thought would work. **This is usually enough to pass the score of 1000**
+To run a game using values that the programmer thought would work. **This is usually enough to pass the score of 1000**
 ```bash
     ./gradlew bootRun --args='--game.mode=naive'
 ```
