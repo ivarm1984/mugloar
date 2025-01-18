@@ -62,7 +62,7 @@ public class GameSettings {
         itemWeights.put(ShopItem.CS, 6);
         itemWeights.put(ShopItem.GAS, 6);
         itemWeights.put(ShopItem.WAX, 6);
-        itemWeights.put(ShopItem.HPOT, 60);
+        itemWeights.put(ShopItem.HPOT, 10);
         itemWeights.put(ShopItem.TRICKS, 5);
         itemWeights.put(ShopItem.WINGPOT, 9);
         itemWeights.put(ShopItem.RF, 10);
