@@ -25,7 +25,7 @@ Unfortunately ~30min trainings did not yield better results as naive solution an
     ./gradlew bootRun --args='--game.mode=pretrained'
 ```
 
-To run full trainging and then run the best player from training. Training parameters can be adjusted in [application.yaml](src/main/resources/application.yaml).
+To run full training and then run the best player from training. Training parameters can be adjusted in [application.yaml](src/main/resources/application.yaml).
 Training is done using a genetic algorithm.  
 ```bash
     ./gradlew bootRun --args='--game.mode=train'
