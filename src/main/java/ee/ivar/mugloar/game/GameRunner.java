@@ -61,6 +61,7 @@ public class GameRunner {
         }
         Shop shop = gameApi.getShop(gameState.getGameId());
         Shop.Item itemToBuy = settings.getDecisionStrategy().chooseItemToBuy(gameState.getGold(), shop, settings);
+        log.debug("Buying item {}", itemToBuy.getType());
         if (itemToBuy != null) {
             int remainingGold = gameApi.buyItem(gameState.getGameId(), itemToBuy.getType().getId());
             gameState.setGold(remainingGold);
