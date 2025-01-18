@@ -44,8 +44,8 @@ class GameRunnerTest {
         // Given
         when(gameService.startGame()).thenReturn(gameStartInfo);
         when(gameService.getMessages(anyString())).thenReturn(List.of(new Message("mess1", 30, Probability.HMM)));
-        var solveResult = new SolveResult(1, 5, 100, false, 40);
-        var solveResult2 = new SolveResult(0, 5, 100, false, 40);
+        var solveResult = new SolveResult(1, 5, 100, false, 140);
+        var solveResult2 = new SolveResult(0, 5, 100, false, 140);
         when(gameService.solveMessage(anyString(), any(Message.class))).thenReturn(solveResult).thenReturn(solveResult2);
         when(gameService.getShop(anyString())).thenReturn(new Shop(List.of()));
 
@@ -66,8 +66,8 @@ class GameRunnerTest {
         when(gameService.startGame()).thenReturn(gameStartInfo);
         when(gameService.getMessages(anyString())).thenReturn(List.of(new Message("mess1", 30, Probability.HMM)));
 
-        var solveResult = new SolveResult(1, 5, 100, false, 60);
-        var solveResult2 = new SolveResult(0, 5, 100, false, 10);
+        var solveResult = new SolveResult(1, 5, 100, false, 160);
+        var solveResult2 = new SolveResult(0, 5, 100, false, 110);
         when(gameService.solveMessage(anyString(), any(Message.class))).thenReturn(solveResult).thenReturn(solveResult2);
 
         Shop shop = new Shop(new ArrayList<>());
@@ -77,10 +77,33 @@ class GameRunnerTest {
         when(gameService.buyItem(anyString(), eq(itemToBuy.getType().getId()))).thenReturn(40);
 
         // When
-        int finalScore = gameRunner.runGame(gameSettings);
+        gameRunner.runGame(gameSettings);
 
         // Then
         verify(gameService).buyItem(anyString(), eq(itemToBuy.getType().getId()));
+    }
+
+    @Test
+    void shouldQueryShopWhenEnoughMoney() {
+        // Given
+        when(gameService.startGame()).thenReturn(gameStartInfo);
+        when(gameService.getMessages(anyString())).thenReturn(List.of(new Message("mess1", 30, Probability.HMM)));
+
+        var solveResult = new SolveResult(1, 5, 100, false, 100);
+        var solveResult2 = new SolveResult(0, 5, 100, false, 110);
+        when(gameService.solveMessage(anyString(), any(Message.class))).thenReturn(solveResult).thenReturn(solveResult2);
+
+        Shop shop = new Shop(new ArrayList<>());
+        Shop.Item itemToBuy = new Shop.Item(ShopItem.CS, 50, "CS");
+        shop.setItems(List.of(itemToBuy));
+        when(gameService.getShop(anyString())).thenReturn(shop);
+        when(gameService.buyItem(anyString(), eq(itemToBuy.getType().getId()))).thenReturn(40);
+
+        // When
+        gameRunner.runGame(gameSettings);
+
+        // Then
+        verify(gameService).getShop(anyString());
     }
 
 }
