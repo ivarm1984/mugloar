@@ -16,13 +16,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GameRunner {
 
-    private static GameSettings SETTINGS = GameSettings.createWithNaiveWeights();
+    private static final int MIN_GOLD_TO_QUERY_SHOP = 100;
+    private GameSettings settings = GameSettings.createWithNaiveWeights();
 
     private final GameService gameApi;
 
     public int runGame(GameSettings settings) {
         if (settings != null) {
-            SETTINGS = settings;
+            this.settings = settings;
         }
         GameStartInfo gameInfo = gameApi.startGame();
         log.info("Starting game {}", gameInfo.getGameId());
@@ -43,7 +44,7 @@ public class GameRunner {
         List<Message> messages = gameApi.getMessages(gameState.getGameId());
         gameState.setMessages(messages);
 
-        Message messageToSolve = SETTINGS.getDecisionStrategy().chooseMessageToSolve(gameState, SETTINGS);
+        Message messageToSolve = settings.getDecisionStrategy().chooseMessageToSolve(gameState, settings);
         log.debug("Chose message with risk: {} and reward: {}", messageToSolve.getProbability(), messageToSolve.getReward());
 
         SolveResult result = gameApi.solveMessage(gameState.getGameId(), messageToSolve);
@@ -55,8 +56,11 @@ public class GameRunner {
     }
 
     private void tryToBuy(GameState gameState) {
+        if (gameState.getGold() < MIN_GOLD_TO_QUERY_SHOP) {
+            return;
+        }
         Shop shop = gameApi.getShop(gameState.getGameId());
-        Shop.Item itemToBuy = SETTINGS.getDecisionStrategy().chooseItemToBuy(gameState.getGold(), shop, SETTINGS);
+        Shop.Item itemToBuy = settings.getDecisionStrategy().chooseItemToBuy(gameState.getGold(), shop, settings);
         if (itemToBuy != null) {
             int remainingGold = gameApi.buyItem(gameState.getGameId(), itemToBuy.getType().getId());
             gameState.setGold(remainingGold);
